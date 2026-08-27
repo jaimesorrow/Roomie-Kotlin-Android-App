@@ -1,0 +1,12 @@
+{
+  "project_info": {
+    "project_id": "PROJECT_ID",
+    "project_number": "PROJECT_NUMBER",
+    "name": "PROJECT_NAME"
+  },
+  "client": [],
+  "configuration_version": "1"
+}
+
+# -> Replace this file with your actual google-services.json when configuring Firebase.
+# Do NOT commit real credentials to the repository.
