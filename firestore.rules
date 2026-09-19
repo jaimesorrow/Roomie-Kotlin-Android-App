@@ -1,0 +1,50 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function active() {
+      return signedIn() && request.auth.token.email_verified == true &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active';
+    }
+    function member(data) { return active() && request.auth.uid in data.memberUids; }
+    match /users/{uid} {
+      allow get: if signedIn() && request.auth.uid == uid;
+      allow list, write: if false;
+      match /blockedUsers/{other} {
+        allow read: if active() && request.auth.uid == uid;
+        allow write: if false;
+      }
+      match /devices/{device} { allow read, write: if false; }
+    }
+    match /publicProfiles/{uid} {
+      allow get: if active();
+      allow list, write: if false;
+    }
+    match /listings/{listingId} {
+      allow get: if active() && (resource.data.status == 'active' || resource.data.ownerUid == request.auth.uid);
+      allow list: if active() && request.query.limit != null && request.query.limit <= 50 &&
+        (resource.data.status == 'active' || resource.data.ownerUid == request.auth.uid);
+      allow write: if false;
+    }
+    match /conversations/{cid} {
+      allow get: if member(resource.data);
+      allow list: if member(resource.data) && request.query.limit != null && request.query.limit <= 50;
+      allow write: if false;
+      match /messages/{mid} {
+        allow get: if member(get(/databases/$(database)/documents/conversations/$(cid)).data);
+        allow list: if member(get(/databases/$(database)/documents/conversations/$(cid)).data) &&
+          request.query.limit != null && request.query.limit <= 100;
+        allow write: if false;
+      }
+    }
+    match /reports/{id} {
+      allow read: if signedIn() && request.auth.token.moderator == true;
+      allow write: if false;
+    }
+    match /entitlements/{uid} {
+      allow get: if active() && request.auth.uid == uid;
+      allow list, write: if false;
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}
