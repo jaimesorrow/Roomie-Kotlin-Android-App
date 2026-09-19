@@ -22,6 +22,6 @@ npm run test:rules
 
 The Firestore emulator verifies read isolation and write denial; backend integration tests verify ownership, deterministic contact, idempotent messages, blocking, expiry, and deletion. Tests use the demo project only.
 
-CI does not require `app/google-services.json`; the implementation shows a setup screen when configuration is absent. Android compilation remains unverified in the current workspace. Signed builds require real configuration and public privacy/deletion URLs.
+CI does not require `app/google-services.json`; the implementation shows a setup screen when configuration is absent. GitHub Actions verifies native unit tests, lint, debug APK assembly, and release AAB bundling. Signed production builds still require real Firebase configuration, signing credentials, and public privacy/deletion URLs.
 
 See [release steps](docs/RELEASE.md), [verification results](docs/READINESS.md), and [monetization plan](docs/MONETIZATION.md).

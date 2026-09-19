@@ -1,6 +1,6 @@
 # Current verification
 
-Prepared locally on 2026-09-18. GitHub upload is pending explicit approval following an automatic approval-review rejection.
+Published to GitHub as pull request #3. Verification below reflects the green `Production verification` workflow at commit `466c1313f5c16aed87a829043d20dda34ba9ecab` on 2026-09-19.
 
 ## Implemented
 
@@ -16,13 +16,14 @@ Prepared locally on 2026-09-18. GitHub upload is pending explicit approval follo
 - Six domain tests, six Firestore security-rule emulator tests, and three backend integration tests passed with the updated dependencies: 15 tests total.
 - Integration tests cover trusted ownership, outsider denial, deterministic contact, idempotent messages, both directions of blocking, expired listings, server-only paid listing limits, queued/retried deletion, direct Auth deletion, entitlement cleanup, and old-token recreation prevention.
 - Functions module loads successfully. Production functions dependency audit reports zero vulnerabilities.
-- Kotlin syntax, XML/JSON/YAML parsing, and whitespace checks passed. Syntax parsing is not Android compilation or lint.
+- GitHub Actions passed Android native unit tests, lint, debug APK assembly, and release AAB bundling on a clean Ubuntu runner with JDK 17, Android platform 36, and build-tools 35.0.0.
+- The workflow produced an `android-verification` artifact containing reports and build outputs. This CI artifact is not a production-signed release.
 
 ## Outstanding before release
 
-- Android compilation, native unit tests, lint, R8, debug APK, and signed bundle remain unverified. Java-based Gradle/SDK downloads fail with a network-unreachable error in the current workspace. CI must pass after upload.
+- Production signing and the credential-gated signed-release workflow remain unverified because the upload key, real Firebase configuration, and public policy/support values have not been supplied.
 - Separate staging/production Firebase setup, real Android app configuration, Authentication/App Check setup, backend/rules/index deployment, budgets/alerts, and retention policies.
 - Operator identity/support, reviewed public privacy and external account-deletion pages, staffed moderation, and upload signing key.
 - Real-device staging tests, notification permission/deep-link/sign-out behavior, accessibility, offline failures, and Play Console submission requirements.
 
-See [release steps](RELEASE.md). This is a locally prepared marketplace implementation with release blockers. No production deployment or Play submission was performed.
+See [release steps](RELEASE.md). This is a compiled and backend-tested marketplace implementation with external release blockers. No production Firebase deployment, signed production build, or Play submission was performed.
