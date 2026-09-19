@@ -1,7 +1,7 @@
 package com.example.roomie
 
 import org.junit.Test
-import kotlin.test.assertTrue
+import org.junit.Assert.assertTrue
 
 class ExampleUnitTest {
     @Test

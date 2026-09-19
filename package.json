@@ -1,0 +1,13 @@
+{
+  "name": "roomie-verification",
+  "private": true,
+  "scripts": {
+    "test": "npm --prefix functions test",
+    "test:rules": "firebase emulators:exec --only firestore --project demo-roomie \"node --test test/firestore.test.mjs && npm --prefix functions run test:integration\""
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "4.0.1",
+    "firebase": "11.10.0",
+    "firebase-tools": "14.12.0"
+  }
+}
