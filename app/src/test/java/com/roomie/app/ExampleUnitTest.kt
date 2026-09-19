@@ -1,4 +1,4 @@
-package com.example.roomie
+package com.roomie.app
 
 import org.junit.Test
 import kotlin.test.assertTrue

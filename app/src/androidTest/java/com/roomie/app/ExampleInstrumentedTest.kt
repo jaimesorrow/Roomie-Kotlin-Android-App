@@ -1,4 +1,4 @@
-package com.example.roomie
+package com.roomie.app
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry

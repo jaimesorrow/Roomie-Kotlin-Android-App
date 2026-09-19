@@ -2,7 +2,7 @@
 # You can control the set of applied configuration files using the
 # proguardFiles setting in build.gradle.kts.
 
--keep class com.example.roomie.data.model.** { *; }
+-keep class com.roomie.app.data.model.** { *; }
 -keep class com.google.firebase.** { *; }
 -keep class com.google.android.gms.** { *; }
 

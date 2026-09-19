@@ -1,4 +1,4 @@
-package com.example.roomie.ui.theme
+package com.roomie.app.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
