@@ -1,14 +1,15 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.roomie.app"
+    namespace = "com.rommie.app"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.roomie.app"
+        applicationId = "Com.rommie.app"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -43,6 +44,8 @@ android {
 }
 
 dependencies {
+    implementation(platform("com.google.firebase:firebase-bom:34.19.0"))
+
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")

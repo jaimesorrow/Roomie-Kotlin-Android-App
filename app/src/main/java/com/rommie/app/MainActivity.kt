@@ -1,4 +1,4 @@
-package com.roomie.app
+package com.rommie.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.roomie.app.ui.theme.RoomieTheme
+import com.rommie.app.ui.theme.RoomieTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
