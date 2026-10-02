@@ -1,0 +1,15 @@
+*.iml
+.gradle/
+local.properties
+.idea/
+build/
+**/build/
+app/google-services.json
+*.jks
+*.keystore
+.env
+.env.*
+node_modules/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
